@@ -1,6 +1,6 @@
 {
   "name": "laravel-echo-server-disonnectable",
-  "version": "1.6.3-d",
+  "version": "1.6.4-d",
   "description": "Laravel Echo Node JS Server for Socket.io",
   "repository": {
     "type": "git",
