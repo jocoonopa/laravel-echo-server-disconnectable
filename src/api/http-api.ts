@@ -45,7 +45,12 @@ export class HttpApi {
         );
 
         this.express.get(
-            '/apps/:appId/channels/:channelName/sockets/:socketId/disconnect',
+            '/apps/:appId/sockets',
+            (req, res) => this.getSockets(req, res)
+        );
+
+        this.express.get(
+            '/apps/:appId/sockets/:socketId/destroy/channels/:channelName',
             (req, res) => this.disconnectSocket(req, res)
         );
     }
@@ -166,11 +171,15 @@ export class HttpApi {
             let users = [];
 
             _.uniqBy(members, 'user_id').forEach((member: any) => {
-                users.push({ id: member.user_id, user_info: member.user_info });
+                users.push(member);
             });
 
             res.json({ users: users });
         }, error => Log.error(error));
+    }
+
+    getSockets(req: any, res: any): void {
+        res.json(_.keys(this.io.sockets.connected))
     }
 
     disconnectSocket(req: any, res: any): boolean {
