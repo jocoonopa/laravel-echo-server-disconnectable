@@ -47,9 +47,9 @@ response 增加 socketId
 ```json
 
 {
-    "subscription_count": 2,
+    "subscription_count": 3,
     "occupied": true,
-    "user_count": 1,
+    "user_count": 3,
     "sockets": [
         "pdJ7IinrB8ZMH18aAAAC",
         "DyjRDrMKePecLHqOAAAO",
