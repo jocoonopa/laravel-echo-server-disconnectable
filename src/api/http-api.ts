@@ -43,6 +43,11 @@ export class HttpApi {
             '/apps/:appId/channels/:channelName/users',
             (req, res) => this.getChannelUsers(req, res)
         );
+
+        this.express.get(
+            '/apps/:appId/channels/:channelName/sockets/:socketId/disconnect',
+            (req, res) => this.disconnectSocket(req, res)
+        );
     }
 
     /**
@@ -166,6 +171,26 @@ export class HttpApi {
 
             res.json({ users: users });
         }, error => Log.error(error));
+    }
+
+    disconnectSocket(req: any, res: any): boolean {
+        let channelName = req.params.channelName;
+        let socketId = req.params.socketId;
+        let socket = this.io.sockets.connected[socketId];
+
+        if (! socket) {
+            this.badResponse(
+                req,
+                res,
+                'Socket id is not exists!'
+            );
+        }
+
+        socket.disconnect();
+
+        this.channel.leave(socket, channelName);
+
+        res.json({ message: 'ok' });
     }
 
     /**

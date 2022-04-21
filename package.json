@@ -1,17 +1,17 @@
 {
-  "name": "laravel-echo-server",
+  "name": "laravel-echo-server-disonnectable",
   "version": "1.6.3",
   "description": "Laravel Echo Node JS Server for Socket.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tlaverdure/Laravel-Echo-Server.git"
+    "url": "https://github.com/jocoonopa/Laravel-Echo-Server.git"
   },
   "main": "dist/index.js",
   "keywords": [
     "laravel",
     "socket.io"
   ],
-  "author": "Thiery Laverdure",
+  "author": "Jocoonopa",
   "license": "MIT",
   "jshintConfig": {
     "esversion": 6
