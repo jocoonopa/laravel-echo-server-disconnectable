@@ -1,4 +1,10 @@
-除了 API 有些許不同，其餘基本上完全一樣。
+# 目的
+
+透過 Http api 呼叫，從 server 端關閉 socket 連線。
+
+# 說明
+
+除了有異動和新增下面的 API ，其餘使用基本上完全一樣。
 
 ## HTTP API
 
@@ -30,13 +36,37 @@ socket ids
 
 ```
 
+**Channel Get information about a particular channel.**
+
+```http
+GET /apps/:APP_ID/channels/:CHANNEL_NAME
+```
+
+response 增加 socketId
+
+```json
+
+{
+    "subscription_count": 2,
+    "occupied": true,
+    "user_count": 1,
+    "sockets": [
+        "pdJ7IinrB8ZMH18aAAAC",
+        "DyjRDrMKePecLHqOAAAO",
+        "x-av0NW1ZXoexUKWAAAJ"
+    ]
+}
+
+
+```
+
 **Channel Users List of users on a channel.**
 
 ``` http
 GET /apps/:appId/channels/:channelName/users
 ```
 
-這條的回傳增加 socketId，方便管理 socket 連線
+response 增加 socketId
 
 example:
 
