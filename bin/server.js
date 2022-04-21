@@ -9,4 +9,4 @@
  */
 var LaravelEchoServerCli = require('../dist/cli');
 
-process.title = 'laravel-echo-server';
+process.title = 'laravel-echo-server-disconnectable';

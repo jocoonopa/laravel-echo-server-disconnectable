@@ -179,7 +179,7 @@ export class HttpApi {
         let socket = this.io.sockets.connected[socketId];
 
         if (! socket) {
-            this.badResponse(
+            return this.badResponse(
                 req,
                 res,
                 'Socket id is not exists!'
@@ -191,6 +191,8 @@ export class HttpApi {
         this.channel.leave(socket, channelName);
 
         res.json({ message: 'ok' });
+
+        return true;
     }
 
     /**
