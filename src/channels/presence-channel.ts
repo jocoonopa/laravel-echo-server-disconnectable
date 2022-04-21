@@ -122,7 +122,8 @@ export class PresenceChannel {
                 let member = members.find(
                     (member) => member.socketId == socket.id
                 );
-                members = members.filter((m) => m.socketId != member.socketId);
+
+                members = members.filter((m) => !_.isNil(member) && m.socketId != member.socketId);
 
                 // 更新 redis 紀錄 (直接整個陣列蓋上去呵呵)
                 this.db.set(channel + ":members", members);
