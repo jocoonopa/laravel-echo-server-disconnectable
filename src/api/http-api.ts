@@ -141,7 +141,7 @@ export class HttpApi {
         if (this.channel.isPresence(channelName)) {
             this.channel.presence.getMembers(channelName).then(members => {
                 result['user_count'] = _.uniqBy(members, 'user_id').length;
-                result['sockets'] = _.isNil(room.sockets) ? [] : _.keys(room.sockets)
+                result['sockets'] = _.isNil(room) || _.isNil(room.sockets) ? [] : _.keys(room.sockets)
 
                 res.json(result);
             });
